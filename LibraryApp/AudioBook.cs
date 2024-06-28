@@ -21,7 +21,7 @@ namespace LibraryApp
 
         public override string ToString()
         {
-            return "Tip: Jurnal," + "Ad: " + Name + "," + "Muddeti (deqiqe): " + Duration + ", Daxil olma vaxti: " + CreatedAt;
+            return "Tip: Sesli Kitab," + "Ad: " + Name + "," + "Muddeti (deqiqe): " + Duration + ", Daxil olma vaxti: " + CreatedAt;
         }
     }
 }

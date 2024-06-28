@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -22,6 +23,8 @@ namespace LibraryApp
             {
                 Console.WriteLine(counter + ". " + item.ToString());
 
+                
+               
                 counter++;
             }
         }
@@ -149,9 +152,9 @@ namespace LibraryApp
                 case 1:
                     addBook(); break;
                 case 2:
-                    addJournal(); break;
+                   addAudioBook(); break;
                 case 3:
-                    addAudioBook(); break;
+                    addJournal(); break;
                 
                 default:
                     Console.WriteLine("Yanlish secim! Xeta..");
@@ -160,9 +163,34 @@ namespace LibraryApp
             }
         }
 
+
+        public void showRentBook()
+        {
+
+            if (rentItems.Count >= 1)
+            {
+                int counter = 1;
+
+                foreach (Item item in rentItems)
+                {
+
+                    Console.WriteLine(counter + ". " + item.ToString());
+
+
+
+                    counter++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Kiraye verilen kitab yoxdur");
+            }
+
+
+
+        }
         public Library()
         {
-            Book kitab = new Book("Nerdname", "Bilinmir", 1980, 130, DateTime.Now);
 
 
 
@@ -183,12 +211,18 @@ namespace LibraryApp
                 if (password != "12345")
                 {
                     wrongAttempts++;
-
+                    if (wrongAttempts < 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Parolu sehv daxil etdiniz");
+                        Console.ResetColor();
+                    }
                     if (wrongAttempts >= 3)
                     {
                         break;
                     }
                 } else
+
                 {
                     AuthSuccess = true;
                     Console.ResetColor();

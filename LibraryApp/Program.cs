@@ -7,10 +7,14 @@ using LibraryApp;
 
 Library library = new Library();
 
-if (library.AuthSuccess) {
+if (library.AuthSuccess)
+{
     showMenu();
 }
-else {
+ 
+
+else
+{
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Uygunsuz cehd sayi. Sag olun");
     Console.ResetColor();
@@ -18,14 +22,17 @@ else {
 
 
 
+
 void showMenu()
 {
+    Console.WriteLine();
     Console.WriteLine("Menyu ile tanish olub sechim edin..");
 
     Console.WriteLine("1. Kitabxanadakı element(kitablar, səsli kitablar, jurnallar və sair) siyahısı");
     Console.WriteLine("2. Element(kitablar, səsli kitablar, jurnallar və sair) əlavə etmək");
     Console.WriteLine("3. Tələbəyə kitab(kitablar, səsli kitablar, jurnallar və sair) kirayə vermək");
     Console.WriteLine("4. Kitabxanada axtarış etmək");
+    Console.WriteLine("5. Kiraye verilen kitabalrin siyahisi");
 
     int choice = int.Parse(Console.ReadLine());
 
@@ -38,14 +45,22 @@ void showMenu()
 
         case 2:
             library.addItem();
+            
             showMenu();
+           
             break;
         case 3:
             library.RentTheBook();
             showMenu();
             break;
         case 4:
-            library.search();  
+            library.search();
+            showMenu();
+            break;
+        case 5:
+            library.showRentBook();
+            showMenu();
+
             break;
         default:
             Console.WriteLine("Yanlis secim etdiniz..");

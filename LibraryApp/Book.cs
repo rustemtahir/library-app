@@ -8,7 +8,7 @@ namespace LibraryApp
 {
     public class Book: Item
     {
-        public string Name { get; }
+        public string Name { get; set; }
 
         public string Author { get; set; }
 
